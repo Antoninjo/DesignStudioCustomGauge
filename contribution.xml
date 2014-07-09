@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdkExtension
+	xmlns="http://www.sap.com/bi/zen/sdk"
+	id="com.ac.speedometer"
+	title="AC Speedometer"
+	version="1.0"
+	vendor="AC">
+	<component
+		id="Speedometer"
+		title="Speedometer"
+		tooltip="Displays a speedometer"
+		icon="res/icon.png"
+		handlerType="div"
+		propertySheetPath="res/additional_properties_sheet/additional_properties_sheet.html">
+		<jsInclude>res/js/component.js</jsInclude>
+		<property id="haveNumbers" title="Show Number" type="boolean"/>
+		<property type="int" title="Number of Big Ticks" id="numOfBigTicks"/>
+		<property type="int" title="Number of Small Ticks" id="numOfSmallTicks"/>
+		<property type="float" title="Indicator Position" id="indicator"/>
+		<property type="boolean" title="Show Value" id="showValue"/>
+		<property type="String" title="Showed Value" id="showedValue"/>
+		<property type="Color" title="Needle Color" id="needleColor"/>
+		<property type="String" title="Title" id="title"/>
+		<property type="int" title="Start Value" id="startValue"/>
+		<property type="int" title="End Value" id="endValue"/>
+		<property type="boolean" title="Gradient Color" id="gradientColor"/>
+		<property type="Color" title="First Color" id="firstColor"/>
+		<property type="Color" title="Second Color" id="secondColor"/>
+		<property type="Color" title="Third Color" id="thirdColor"/>
+		<property type="int" title="Start of Second Color" id="startSecondColor"/>
+		<property type="int" title="Start of Third Color" id="startThirdColor"/>
+
+		
+
+		<initialization>
+			<defaultValue property="WIDTH">300</defaultValue>
+			<defaultValue property="HEIGHT">300</defaultValue>
+			<defaultValue property="showNumbers">false</defaultValue>
+			<defaultValue property="numOfBigTicks">5</defaultValue>
+			<defaultValue property="numOfSmallTicks">2</defaultValue>
+			<defaultValue property="indicator">1</defaultValue>
+			<defaultValue property="showedValue">No Value</defaultValue>
+			<defaultValue property="needleColor">#D80000</defaultValue>
+			<defaultValue property="title">Insert Title Here</defaultValue>
+			<defaultValue property="showValue">false</defaultValue>
+			<defaultValue property="startValue">0</defaultValue>
+			<defaultValue property="endValue">100</defaultValue>
+			<defaultValue property="gredientColor">true</defaultValue>
+			<defaultValue property="firstColor">#FA1E1E</defaultValue>
+			<defaultValue property="secondColor">#FCFA4E</defaultValue>
+			<defaultValue property="thirdColor">#2BFC23</defaultValue>
+			<defaultValue property="startSecondColor">20</defaultValue>
+			<defaultValue property="startThirdColor">80</defaultValue>
+			
+		</initialization>
+	</component>
+</sdkExtension>
