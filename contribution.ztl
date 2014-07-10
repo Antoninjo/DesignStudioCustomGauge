@@ -5,7 +5,7 @@ class com.ac.speedometer.Speedometer extends Component {
 	*}
 	
 	/* Sets the showed value of the component */
-	void setShowedValue(String val){*
-		this.showedValue = val;
+	void setShowedValue(String value){*
+		this.showedValue = value;
 	*}
 }
