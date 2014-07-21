@@ -29,7 +29,8 @@
 		<property type="Color" title="Third Color" id="thirdColor"/>
 		<property type="int" title="Start of Second Color" id="startSecondColor"/>
 		<property type="int" title="Start of Third Color" id="startThirdColor"/>
-
+		<property type="Color" title="Main Color" id="mainColor"/>
+		<property type="Color" title="Text and Ticks Color" id="ttColor"/>
 		
 
 		<initialization>
@@ -51,6 +52,9 @@
 			<defaultValue property="thirdColor">#2BFC23</defaultValue>
 			<defaultValue property="startSecondColor">20</defaultValue>
 			<defaultValue property="startThirdColor">80</defaultValue>
+			<defaultValue property="mainColor">#EDEDED</defaultValue>
+			<defaultValue property="ttColor">#000000</defaultValue>
+			
 			
 		</initialization>
 	</component>

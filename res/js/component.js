@@ -17,6 +17,9 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 	var thirdColor = "#2BFC23";
 	var startSecondColor = 20;
 	var startThirdColor = 80;
+	var mainColor = "#EDEDED"
+	var ttColor = "#000000";
+
 	
 	this.fCanvas = null;
 	this.sCanvas = null;
@@ -45,7 +48,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 
 	//FUNCTION CALLED AFTER RENDERING
 	this.afterUpdate = function() {
-		speedoMeter();
+		setTimeout(function(){speedoMeter()},250);
 	};
 
 
@@ -176,6 +179,15 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 		}
 	};	
 
+	this.mainColor = function(value) {
+		if (value == undefined) {
+			return mainColor;
+		} else {
+			mainColor = value;
+			return this;
+		}
+	};		
+	
 	this.startSecondColor = function(value) {
 		if (value == undefined) {
 			return startSecondColor;
@@ -194,7 +206,15 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 		}
 	};		
 	
-
+	this.ttColor = function(value) {
+		if (value == undefined) {
+			return ttColor;
+		} else {
+			ttColor = value;
+			return this;
+		}
+	};		
+	
 
 	
 	//MAIN FUNCTION OF THE COMPONENT
@@ -206,6 +226,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 		
 		var width = that.$().width();
 		var height = that.$().height();
+
 		
 		that.fCanvas.width=width;
 		that.fCanvas.height=height;
@@ -274,7 +295,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 		//GRADIENTE PER IL BORDO
 		var grd=ctx.createLinearGradient(25,25,width,height);
 		grd.addColorStop(0,"white");
-		grd.addColorStop(1,"grey");
+		grd.addColorStop(1,mainColor);
 
 
 		//COLORE BORDO
@@ -288,7 +309,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 		//TRACCIO CERCHIO
 		ctx.arc(centerX, centerY, (radius-bodyWidth), 0, 2 * Math.PI, true);
 		//SCELGO IL COLORE DI RIEMPIMENTO
-		ctx.fillStyle = "#EDEDED";
+		ctx.fillStyle = mainColor;
 		//RIEMPIO
 		ctx.fill();
 		//SCELGO LARGHEZZA BORDO
@@ -296,7 +317,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 
 		//GRADIENTE PER IL BORDO
 		var grd=ctx.createLinearGradient(25,25,width,height);
-		grd.addColorStop(0,"grey");
+		grd.addColorStop(0,mainColor);
 		grd.addColorStop(1,"white");
 	
 
@@ -393,45 +414,13 @@ if(!gradientColor){
 
 	//END DISEGNO COLORI
 }
-		
-		
-		
-		/**
-		//START DISEGNO COLORI
-		ctx.beginPath();
-
-		//RUOTO 30° A SINISTRA
-		//TRACCIO CERCHIO
-		ctx.arc(centerX, centerY, (radius-bodyWidth*2), 30*DEG2RAD, 150*DEG2RAD, true);
-
-		//SCELGO LARGHEZZA BORDO
-		ctx.lineWidth = bodyWidth;
-
-		ctx.lineCap = "round";
-
-
-		//GRADIENTE PER IL BORDO
-		var grd=ctx.createLinearGradient(0,centerY,centerX,centerY);
-		grd.addColorStop(0,"red");
-		grd.addColorStop(0.5,"yellow");
-		grd.addColorStop(1,"green");
-
-
-		//COLORE BORDO
-		ctx.strokeStyle = grd;
-
-		//DIESGNO FINITO
-		ctx.stroke();
-
-		//END DISEGNO COLORI
-**/
 
 
 		//WRITE VALUE IF true
 		if(showValue){
 			ctx.font = 13*scale+'pt Georgia';
 			ctx.textAlign = 'center';
-			ctx.fillStyle = 'black';
+			ctx.fillStyle = ttColor;
 			ctx.fillText(showedValue, centerX,centerY+50*scale);
 		}
 
@@ -439,7 +428,7 @@ if(!gradientColor){
 
 		// draw big ticks		
 		ctx.translate(centerX, centerY);
-		ctx.strokeStyle="black";
+		ctx.strokeStyle=ttColor;
 		ctx.lineCap = "round";
 		ctx.lineWidth = hourTickWidth;
 		ctx.save();
@@ -462,7 +451,7 @@ if(!gradientColor){
 				ctx.rotate((210-(t2trad*i))*DEG2RAD);
 				ctx.font=12*scale+"px Georgia";
 				ctx.textAlign='start';
-				ctx.fillStyle="black";
+				ctx.fillStyle=ttColor;
 				if((Math.round(startValue+(i*numInterval)))>=100&&(i>(numOfBigTicks/2))){
 					ctx.fillText(Math.round(startValue+(i*numInterval)),(-15*scale),(5*scale));			
 				}else if(i<(numOfBigTicks*2/3)){
@@ -546,7 +535,7 @@ if(!gradientColor){
 			ctx.save();
 			var grd=ctx.createLinearGradient(-10,-10,10,10);
 			grd.addColorStop(0,"white");
-			grd.addColorStop(1,"grey");
+			grd.addColorStop(1,mainColor);
 			ctx.fillStyle = grd;
 			ctx.beginPath();
 			ctx.arc(0, 0, bossRadius, 0, 360 * DEG2RAD);
@@ -561,5 +550,6 @@ if(!gradientColor){
 
 		}
 	}
+	
 
 });
