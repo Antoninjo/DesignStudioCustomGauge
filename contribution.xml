@@ -23,6 +23,7 @@
 		<property type="String" title="Title" id="title"/>
 		<property type="int" title="Start Value" id="startValue"/>
 		<property type="int" title="End Value" id="endValue"/>
+		<property type="float" title="Indicator Speed" id="indicatorHop" />
 		<property type="boolean" title="Gradient Color" id="gradientColor"/>
 		<property type="Color" title="First Color" id="firstColor"/>
 		<property type="Color" title="Second Color" id="secondColor"/>
@@ -46,6 +47,7 @@
 			<defaultValue property="showValue">false</defaultValue>
 			<defaultValue property="startValue">0</defaultValue>
 			<defaultValue property="endValue">100</defaultValue>
+			<defaultValue property="indicatorHop">0.5</defaultValue>
 			<defaultValue property="gredientColor">true</defaultValue>
 			<defaultValue property="firstColor">#FA1E1E</defaultValue>
 			<defaultValue property="secondColor">#FCFA4E</defaultValue>
