@@ -9,6 +9,7 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 	var needleColor = "#D80000";
 	var startValue = 0;
 	var endValue = 100;
+	var indicatorHop = 0.5;
 	var title = "Insert Title Here";
 	var showedValue = "No Value";
 	var gradientColor = true;
@@ -133,6 +134,15 @@ sap.designstudio.sdk.Component.subclass("com.ac.speedometer.Speedometer", functi
 			return this;
 		}
 	};	
+	
+	this.indicatorHop = function(value) {
+		if (value == undefined) {
+			return indicatorHop;
+		} else {
+			indicatorHop = value;
+			return this;
+		}
+	};
 	
 	this.showedValue = function(value) {
 		if (value == undefined) {
@@ -496,6 +506,7 @@ if(!gradientColor){
 		}
 		
 		var currentIndicator = 0.5;
+		var maxIndicator = indicator*240/100
 
 		var ctx = that.sCanvas.getContext("2d");
 		ctx.translate(centerX, centerY);
@@ -512,7 +523,12 @@ if(!gradientColor){
 			ctx.shadowBlur = shadowOffsetBlur;
 			ctx.shadowColor = shadowColor;
 		
-			ctx.rotate(0.5  * DEG2RAD);
+			var nextValue = currentIndicator + indicatorHop;
+			var thisHop = indicatorHop;
+			if(nextValue > maxIndicator) {
+				thisHop = indicatorHop - (nextValue - maxIndicator);
+			}
+			ctx.rotate(thisHop  * DEG2RAD);
 			ctx.strokeStyle = needleColor;
 			ctx.lineWidth = secondHandWidth;
 			ctx.beginPath();
@@ -543,11 +559,11 @@ if(!gradientColor){
 			ctx.restore();
 		
 
-			if(currentIndicator>=(indicator*240/100)){
+			if(currentIndicator>=(maxIndicator)){
 				myStopFunction();
+			} else {
+				currentIndicator+=thisHop;
 			}
-			currentIndicator+=0.5;
-
 		}
 	}
 	
