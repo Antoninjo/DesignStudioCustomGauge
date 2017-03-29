@@ -1,6 +1,9 @@
 DesignStudioCustomGauge
 =======================
 
+DISCLAIMER: THIS PROJECT IS UNMAINTAINED - Look for the component here : https://blogs.sap.com/2015/12/22/scn-design-studio-16-sdk-components-ver-30/
+
+
 JavaScript Implemented Gauge for Sap Design Studio
 
 
